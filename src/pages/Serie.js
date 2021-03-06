@@ -21,7 +21,7 @@ import { ClockCircleOutlined, ReadOutlined } from "@ant-design/icons";
 
 import YouTube from "react-youtube";
 import Modal from "antd/lib/modal/Modal";
-
+import PNA from "../images/PNA.png";
 const { Title } = Typography;
 
 const Serie = () => {
@@ -74,6 +74,8 @@ const Serie = () => {
     }
   };
   const history = useHistory();
+
+  const posterSrc = serie.poster_path ? `${imagepath + poster_path}` : PNA;
 
   const SerieDetails = () => {
     return (
@@ -196,13 +198,15 @@ const Serie = () => {
             //subTitle={tagline}
           />
 
-          <div className='serie__homeImage_black'>
-            <img
-              className='serie__homeImage'
-              src={`${imagepath + backdrop_path}`}
-              alt=''
-            />
-          </div>
+          {backdrop_path && (
+            <div className='serie__homeImage_black'>
+              <img
+                className='serie__homeImage'
+                src={`${imagepath + backdrop_path}`}
+                alt=''
+              />
+            </div>
+          )}
 
           <Row>
             <Row>
@@ -211,7 +215,7 @@ const Serie = () => {
                   <Col className='mobileBlock'>
                     <img
                       width='300px'
-                      src={imagepath + poster_path}
+                      src={posterSrc}
                       alt={name + "poster"}
                       style={{ margin: "0 1rem" }}
                     ></img>

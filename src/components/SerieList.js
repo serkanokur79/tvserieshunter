@@ -57,13 +57,11 @@ const SerieList = (props) => {
           <Paginator />
 
           <Row gutter={[16, 16]}>
-            {series
-              .filter((serie) => serie.poster_path)
-              .map((serie) => (
-                <Col span={span}>
-                  <SerieMiniCard serie={serie} key={serie.id} />
-                </Col>
-              ))}
+            {series.map((serie) => (
+              <Col span={span}>
+                <SerieMiniCard serie={serie} key={serie.id} />
+              </Col>
+            ))}
           </Row>
           <Paginator />
         </>

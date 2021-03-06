@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Moment from "react-moment";
 import { Card, Row, Space, Typography, Col } from "antd";
 import { CalendarOutlined, HeartOutlined } from "@ant-design/icons";
+import PNA from "../images/PNA.png";
 const { Title } = Typography;
 
 function SerieMiniCard({ serie }) {
@@ -18,18 +19,17 @@ function SerieMiniCard({ serie }) {
 
   const history = useHistory();
 
+  const src = serie.poster_path
+    ? `https://image.tmdb.org/t/p/w185_and_h278_bestv2/${poster_path}`
+    : PNA;
+
   return (
     <>
       <Card
         hoverable
         style={{ width: "100%" }}
         onClick={() => history.push(`/serie/${id}`)}
-        cover={
-          <img
-            alt={name + "poster"}
-            src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${poster_path}`}
-          />
-        }
+        cover={<img alt={name + "poster"} src={src} />}
       >
         <Row>
           <Title level={5}>
