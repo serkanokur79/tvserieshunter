@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Tv Series Hunter by Serkan Okur",
+  "short_name": "TvSeriesHunter",
   "icons": [
     {
       "src": "favicon.ico",
@@ -19,7 +19,8 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2c4a7e",
+  "background_color": "#21f36f",
+  "display": "fullscreen",
+  "scope": "/"
 }
