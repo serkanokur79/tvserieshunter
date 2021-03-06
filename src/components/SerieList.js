@@ -30,7 +30,7 @@ const SerieList = (props) => {
       setCurrentPage={setSeriesCurrentPage}
       totalResults={seriesTotalResults}
       searchedQuery={searchedQuery}
-      type='full'
+      type={decidePaginationType()}
     />
   );
 
@@ -48,6 +48,10 @@ const SerieList = (props) => {
       : window.innerWidth < 1280
       ? 6
       : 4;
+  };
+
+  const decidePaginationType = () => {
+    return window.innerWidth < 767 ? "simple" : "full";
   };
 
   return (
