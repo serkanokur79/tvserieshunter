@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import PaginationA from "./PaginationA";
 import SerieMiniCard from "./SerieMiniCard";
-import { Row, Col, Button } from "antd";
+import { Row, Col } from "antd";
 import SerieContext from "../context/series/SerieContext";
 
 const SerieList = (props) => {
