@@ -82,29 +82,17 @@ function SiteFooter() {
         </Col>
         <Row
           type='flex'
-          align='center'
           justify='center'
+          align='middle'
           className='mobileHidden tabletHidden'
         >
           <Title level={5}>
-            (c) 2021 - Serkan Okur - a portfolio project developed with React
-            and
+            &#169; 2021 - Serkan Okur - This product uses the TMDb API but is
+            not endorsed or certified by{" "}
             <Link href='https://developers.themoviedb.org/3' target='_blank'>
               TMDb API
             </Link>
           </Title>
-
-          <Space>
-            <img
-              src={TMDb}
-              style={{ height: "0.7rem", width: "1.4rem" }}
-              alt='TMDb API Logo'
-            />
-            <Text mark>
-              This product uses the TMDb API but is not endorsed or certified by
-              TMDb.
-            </Text>
-          </Space>
         </Row>
       </Row>
 
