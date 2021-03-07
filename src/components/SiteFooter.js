@@ -87,10 +87,13 @@ function SiteFooter() {
           className='mobileHidden tabletHidden'
         >
           <Title level={5}>
-            &#169; 2021 - Serkan Okur - This product uses the TMDb API but is
-            not endorsed or certified by{" "}
+            &#169; 2021 -
+            <Link href='https://www.serkanokur.xyz' target='_blank'>
+              Serkan Okur
+            </Link>
+            - This product uses the TMDb API but is not endorsed or certified by{" "}
             <Link href='https://developers.themoviedb.org/3' target='_blank'>
-              TMDb API
+              TMDb
             </Link>
           </Title>
         </Row>
