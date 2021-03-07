@@ -198,7 +198,6 @@ const SerieMobile = () => {
                 className='serie__homeImage'
                 src={`${imagepath + backdrop_path}`}
                 alt=''
-                style={{ padding: "0 -1rem" }}
               />
             </div>
           )}
