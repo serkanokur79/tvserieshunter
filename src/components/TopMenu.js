@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import TMDb from "../images/TMDb.svg";
 import {
   AntDesignOutlined,
@@ -15,7 +14,10 @@ const { SubMenu } = Menu;
 
 export default function TopMenu({ theme, setTheme }) {
   const [current, setCurrent] = useState(1);
-
+  let location = useLocation();
+  console.log("pathname", location.pathname);
+  const isHome = location.pathname === "/";
+  console.log(isHome);
   const handleClick = (e) => {
     setCurrent(e.key);
   };
@@ -23,38 +25,46 @@ export default function TopMenu({ theme, setTheme }) {
   const history = useHistory();
 
   return (
-    <Row gutter={8}>
-      <Col>
-        <Link to='/'>
-          <Button type='link'>
-            <Col xs={4}>
-              <Space>
-                <img src={TMDb} style={{ height: "1.2rem" }} alt='TMDB Logo' />
+    <Row gutter={8} flex justify='end'>
+      {!isHome && (
+        <Col>
+          <Link to='/'>
+            <Button type='link'>
+              <Col xs={4}>
+                <Space>
+                  <img
+                    src={TMDb}
+                    style={{ height: "1.2rem" }}
+                    alt='TMDB Logo'
+                  />
 
-                <Title
-                  level={3}
-                  style={{ color: "gray", height: "1.2rem" }}
-                  className='mobileHidden'
-                >
-                  TV Series Hunter
-                </Title>
-              </Space>
-            </Col>
-          </Button>
-        </Link>
-      </Col>
+                  <Title
+                    level={3}
+                    style={{ color: "gray", height: "1.2rem" }}
+                    className='mobileHidden'
+                  >
+                    TV Series Hunter
+                  </Title>
+                </Space>
+              </Col>
+            </Button>
+          </Link>
+        </Col>
+      )}
 
-      <Col
-        xs={14}
-        flex='auto'
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <SearchBar />
-      </Col>
+      {!isHome && (
+        <Col
+          xs={14}
+          flex='auto'
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SearchBar />
+        </Col>
+      )}
 
       <Col xs={0} lg={6}>
         <Row justify='center' align='middle'>
