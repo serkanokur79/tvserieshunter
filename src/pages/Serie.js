@@ -223,7 +223,7 @@ const SerieMobile = () => {
               <Col xs={20} offset={1}>
                 <Row className='serie_info_rows'>
                   <Descriptions
-                    column={{ xxl: 6, xl: 5, lg: 4, md: 3 }}
+                    column={{ xxl: 6, xl: 5, lg: 4, md: 3, sm: 2 }}
                     size='14'
                   >
                     <Descriptions.Item label='Origin'>
