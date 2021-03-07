@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import TopMenu from "./components/TopMenu";
 import SiteFooter from "./components/SiteFooter";
 import SearchResults from "./pages/SearchResults";
-import SerieMobile from "./pages/Serie_mobile";
+import Serie from "./pages/Serie";
 
 import SerieState from "./context/series/SerieState";
 import LatestSeries from "./pages/LatestSeries";
@@ -33,7 +33,7 @@ function App() {
                 <SearchResults />
               </Route>
               <Route path='/Serie/:serieId'>
-                <SerieMobile />
+                <Serie />
               </Route>
               <Route path='/latestseries'>
                 <LatestSeries />

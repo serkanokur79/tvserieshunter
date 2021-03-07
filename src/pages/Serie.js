@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { CaretRightOutlined } from "@ant-design/icons";
-import MovieRating from ".././components/MovieRating";
+import MovieRating from "../components/MovieRating";
 import SimilarSeries from "../components/SimilarSeries";
 import SerieContext from "../context/series/SerieContext";
 import {
@@ -24,7 +24,7 @@ import Modal from "antd/lib/modal/Modal";
 import PNA from "../images/PNA.png";
 const { Title } = Typography;
 
-const Serie = () => {
+const SerieMobile = () => {
   const serieContext = useContext(SerieContext);
   const {
     loading,
@@ -79,11 +79,7 @@ const Serie = () => {
 
   const SerieDetails = () => {
     return (
-      <Col
-        style={{
-          padding: "2rem",
-        }}
-      >
+      <Col style={{ marginTop: "2rem" }}>
         <Space direction='vertical' size='small'>
           <Row>
             <Title>{name}</Title>
@@ -98,33 +94,29 @@ const Serie = () => {
             </Title>
           </Row>
           <Row>
-            <Space split={<Divider type='vertical' />}>
-              <Col>
-                <Title level={3}>
-                  <Space size='middle'>
-                    <ReadOutlined />
-                    {genres.map(
-                      (genre, i) =>
-                        genre.name + (i === genres.length - 1 ? "" : ",")
-                    )}
-                  </Space>
-                </Title>
-              </Col>
-              <Col>
-                <Title level={4}>
-                  <Space size='middle'>
-                    <ClockCircleOutlined />
-                    {episode_run_time > 60
-                      ? Math.floor(episode_run_time / 60) +
-                        "h " +
-                        (episode_run_time -
-                          Math.floor(episode_run_time / 60) * 60) +
-                        "m"
-                      : episode_run_time + "m"}
-                  </Space>
-                </Title>
-              </Col>
-            </Space>
+            <Col xs={24}>
+              <Title level={3}>
+                <ReadOutlined />{" "}
+                {genres.map(
+                  (genre, i) =>
+                    genre.name + (i === genres.length - 1 ? "" : ",")
+                )}
+              </Title>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={24}>
+              <Title level={4}>
+                <ClockCircleOutlined />{" "}
+                {episode_run_time > 60
+                  ? Math.floor(episode_run_time / 60) +
+                    "h " +
+                    (episode_run_time -
+                      Math.floor(episode_run_time / 60) * 60) +
+                    "m"
+                  : episode_run_time + "m"}
+              </Title>
+            </Col>
           </Row>
           <Row>
             <Space>
@@ -135,10 +127,10 @@ const Serie = () => {
                 <MovieRating vote_average={vote_average} width='4rem' />
               </Col>
 
-              <Col>
+              <Col xs={0}>
                 <Title level={4}>Trailer:</Title>
               </Col>
-              <Col>
+              <Col xs={0}>
                 <Button
                   type='ghost'
                   size='large'
@@ -175,7 +167,9 @@ const Serie = () => {
             <Title level={3}>{tagline}</Title>
           </Row>
           <Row>
-            <Title level={5}>{overview}</Title>
+            <Col>
+              <Title level={5}>{overview}</Title>
+            </Col>
           </Row>
         </Space>
       </Col>
@@ -204,67 +198,64 @@ const Serie = () => {
                 className='serie__homeImage'
                 src={`${imagepath + backdrop_path}`}
                 alt=''
+                style={{ padding: "0 -1rem" }}
               />
             </div>
           )}
 
-          <Row>
-            <Row>
-              <Row>
-                <Space align='start' size='large'>
-                  <Col className='mobileBlock'>
-                    <img
-                      width='300px'
-                      src={posterSrc}
-                      alt={name + "poster"}
-                      style={{ margin: "0 1rem" }}
-                    ></img>
-                  </Col>
-                  <Row className='mobileHidden'>
-                    <SerieDetails />
-                  </Row>
-                </Space>
-              </Row>
-              <Row className='mobileVisible'>
+          <Row wrap>
+            <Row wrap gutter={8}>
+              <Col xs={22} offset={1} lg={6}>
+                <img
+                  width='300px'
+                  style={{ objectFit: "cover" }}
+                  src={posterSrc}
+                  alt={name + "poster"}
+                ></img>
+              </Col>
+              <Col xs={22} offset={1} lg={16}>
                 <SerieDetails />
-              </Row>
+              </Col>
             </Row>
-
             <Space direction='vertical'>
-              <Divider orientation='left'>
+              <Divider orientation='left' style={{ marginTop: "5rem" }}>
                 <Title level={3}>Info</Title>
               </Divider>
-              <Row className='serie_info_rows'>
-                <Descriptions
-                  column={{ xxl: 6, xl: 5, lg: 4, md: 3, sm: 2, xs: 1 }}
-                  size='8'
-                >
-                  <Descriptions.Item label='Origin'>
-                    {origin_country}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Status'>{status}</Descriptions.Item>
-                  <Descriptions.Item label='Seasons'>
-                    {number_of_seasons}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Episodes'>
-                    {number_of_episodes}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Budget'>
-                    {budget !== "Unknown" ? moneyFormatted(budget) : budget}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Revenue'>
-                    {revenue !== "Unknown" ? moneyFormatted(revenue) : "-"}
-                  </Descriptions.Item>
+              <Col xs={20} offset={1}>
+                <Row className='serie_info_rows'>
+                  <Descriptions
+                    column={{ xxl: 6, xl: 5, lg: 4, md: 3 }}
+                    size='14'
+                  >
+                    <Descriptions.Item label='Origin'>
+                      {origin_country}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Status'>
+                      {status}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Seasons'>
+                      {number_of_seasons}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Episodes'>
+                      {number_of_episodes}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Budget'>
+                      {budget !== "Unknown" ? moneyFormatted(budget) : budget}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Revenue'>
+                      {revenue !== "Unknown" ? moneyFormatted(revenue) : "-"}
+                    </Descriptions.Item>
 
-                  {/* <Descriptions.Item label='IMDB'>{imdb_id}</Descriptions.Item>*/}
-                </Descriptions>
-              </Row>
+                    {/* <Descriptions.Item label='IMDB'>{imdb_id}</Descriptions.Item>*/}
+                  </Descriptions>
+                </Row>
+              </Col>
 
               <Divider orientation='left'>
                 <Title level={3}>Videos</Title>
               </Divider>
-              <div className='tabSlider'>
-                <Row>
+              <Col xs={24}>
+                <div className='tabSlider'>
                   <Space>
                     {serieVideos.length === 0 && (
                       <>
@@ -274,10 +265,11 @@ const Serie = () => {
                     )}
 
                     {serieVideos.map((video, i) => (
-                      <div key={i}>
+                      <Col key={i}>
                         <Title level={4}>{video.type}:</Title>
                         <YouTube
                           videoId={video.key}
+                          onPlay={() => alert("deneme")}
                           opts={{
                             height: "280",
                             width: "525",
@@ -288,25 +280,27 @@ const Serie = () => {
                           }}
                           onReady={(event) => event.target.pauseVideo()}
                         />
-                      </div>
+                      </Col>
                     ))}
                   </Space>
-                </Row>
-              </div>
+                </div>
+              </Col>
               <Divider orientation='left'>
                 <Title level={3}>Similar Tv Series</Title>
               </Divider>
-              <Row>
-                <SimilarSeries serieId={serieId} />
-              </Row>
+              <Col xs={24}>
+                <div className='tabSlider'>
+                  <SimilarSeries serieId={serieId} />
+                </div>
+              </Col>
             </Space>
           </Row>
         </>
       )}
-      {loading && <Progress percent={50} status='active' />}
+      {loading && <Progress percent={80} status='active' />}
       {serieError && !loading && <h1>Serie not found!</h1>}
     </div>
   );
 };
 
-export default Serie;
+export default SerieMobile;
