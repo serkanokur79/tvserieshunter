@@ -206,7 +206,7 @@ const SerieMobile = () => {
             <Row wrap gutter={8}>
               <Col xs={22} offset={1} lg={6}>
                 <img
-                  width='300px'
+                  width='280px'
                   style={{ objectFit: "cover" }}
                   src={posterSrc}
                   alt={name + "poster"}
