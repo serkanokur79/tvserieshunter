@@ -6,40 +6,25 @@ import { Layout } from "antd";
 import Home from "./pages/Home";
 import TopMenu from "./components/TopMenu";
 import SiteFooter from "./components/SiteFooter";
-import { useEffect, useState } from "react";
 import SearchResults from "./pages/SearchResults";
 import Serie from "./pages/Serie";
 
 import SerieState from "./context/series/SerieState";
 import LatestSeries from "./pages/LatestSeries";
 import TopRatedSeries from "./pages/TopRatedSeries";
+import Page404 from "./pages/Page404";
 
 const { Header, Footer, Content } = Layout;
 
 function App() {
-  const [theme, setTheme] = useState("light");
-
-  const backgroundColor = theme === "light" ? "white" : "black";
-  const fontColor = theme === "light" ? "black" : "white";
-
-  useEffect(() => {
-    console.log("apptheme:" + theme);
-  }, [theme]);
-
   return (
     <SerieState>
       <Router>
-        <Layout theme={theme}>
-          <Header
-            visible='false'
-            style={{
-              backgroundColor: `${backgroundColor}`,
-              color: `${fontColor}`,
-            }}
-          >
-            <TopMenu theme={theme} setTheme={(theme) => setTheme(theme)} />
+        <Layout>
+          <Header theme='light'>
+            <TopMenu />
           </Header>
-          <Content className='site-layout' theme={theme}>
+          <Content className='site-layout'>
             <Switch>
               <Route exact path='/'>
                 <Home />
@@ -56,15 +41,10 @@ function App() {
               <Route path='/topratedseries'>
                 <TopRatedSeries />
               </Route>
+              <Route component={Page404} />
             </Switch>
           </Content>
-          <Footer
-            style={{
-              backgroundColor: `${backgroundColor}`,
-              color: "white",
-              textAlign: "center",
-            }}
-          >
+          <Footer theme='light'>
             <SiteFooter />
           </Footer>
         </Layout>
