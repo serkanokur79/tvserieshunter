@@ -2,6 +2,8 @@
 
 ## A responsive Tv Series Search Site created with React, AntDesign, TMDb API and Love :)
 
+<img src="https://github.com/serkanokur79/tvserieshunter/blob/main/SS/001.png" height="250" title="TvSeries Hunter" alt="TvSeries Hunter">
+
 <h3>Web </h3>
   <img src="https://github.com/serkanokur79/tvserieshunter/blob/main/SS/Web_01_Home.png" height="250" title="Home page in PC" alt="Screenshot of Home page in PC">
   <img src="https://github.com/serkanokur79/tvserieshunter/blob/main/SS/Web_02_LatestTVSeries.png" height="250" title="Latest TV Series page in PC" alt="Screenshot of Latest TV Series page in Tablet">
