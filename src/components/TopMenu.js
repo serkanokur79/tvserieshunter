@@ -25,10 +25,10 @@ export default function TopMenu({ theme, setTheme }) {
   return (
     <div className='site-header'>
       <Row>
-        <Col flex='100px'>
+        <Col>
           <Link to='/'>
             <Button type='link'>
-              <Col>
+              <Col xs={4}>
                 <Space>
                   <img
                     src={TMDb}
@@ -51,6 +51,7 @@ export default function TopMenu({ theme, setTheme }) {
 
         <Col
           flex='auto'
+          xs={16}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -59,7 +60,7 @@ export default function TopMenu({ theme, setTheme }) {
         >
           <SearchBar />
         </Col>
-        <Col flex='400px' className='mobileHidden tabletHidden'>
+        <Col className='mobileHidden tabletHidden'>
           <Row justify='center' align='middle'>
             <Menu
               theme='dark'

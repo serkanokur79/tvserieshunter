@@ -1,12 +1,11 @@
 import { Input } from "antd";
 import React, { useContext, useState } from "react";
-//import "./SearchBar.css";
 import SerieContext from "../context/series/SerieContext";
 import { useHistory } from "react-router-dom";
 
 const { Search } = Input;
 
-export default function SearchBar() {
+export default function SearchBar({ size = "middle", placeholder = "Search" }) {
   const serieContext = useContext(SerieContext);
   const { searchSeries } = serieContext;
   const history = useHistory();
@@ -22,11 +21,12 @@ export default function SearchBar() {
   return (
     <Search
       allowClear
-      placeholder='search'
+      placeholder={placeholder}
       value={query}
       onChange={(event) => setQuery(event.target.value)}
       onSearch={() => handleSearch()}
       enterButton
+      size={size}
     />
   );
 }

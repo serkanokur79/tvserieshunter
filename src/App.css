@@ -14,15 +14,15 @@
 }
 
 .home {
-  min-height: 80vh;
+  min-height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tabSlider {
-  width: 100%;
-  max-width: 1350px;
+  width: 90vw;
+  max-width: 1250px;
   margin: 0 auto;
   height: auto;
   background-color: transparent;
@@ -56,12 +56,24 @@
 
 .mobileVisible {
   display: none;
+  max-height: 0;
+}
+
+.mobileBlock {
+  width: 100%;
 }
 
 .mobileHidden {
   display: block;
 }
+.tabletVisible {
+  display: none;
+  max-height: 0;
+}
 
+.tabletHidden {
+  display: block;
+}
 /* 
 responsive
 ----------
@@ -91,6 +103,19 @@ responsive
   .home {
     min-height: 70vh;
   }
+
+  .tabletVisible {
+    display: block;
+  }
+
+  .tabletHidden {
+    display: none;
+    max-height: 0;
+  }
+  .pcHidden {
+    display: none;
+    max-height: 0;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -100,11 +125,13 @@ responsive
 
   .mobileHidden {
     display: none;
+    max-height: 0;
   }
 
   .mobileBlock {
-    width: 90vw;
+    width: 100%;
     margin: 0 auto;
+    text-align: center;
   }
 
   .site-layout {
@@ -114,12 +141,21 @@ responsive
   }
 
   .site-header {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
   }
 
   .home {
     width: 90%;
     margin: 0 auto;
+  }
+
+  .tabSlider {
+    width: 90vw;
+    max-width: 650px;
+    margin: 0 auto;
+    height: auto;
+    background-color: transparent;
+    overflow: auto;
   }
 }

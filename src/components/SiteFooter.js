@@ -30,7 +30,7 @@ function SiteFooter() {
   return (
     <>
       <Row align='middle' justify='center'>
-        <Col flex='500px' className='mobileVisible tabletVisible'>
+        <Col className='mobileVisible tabletVisible'>
           <div>
             <Menu
               theme='light'
