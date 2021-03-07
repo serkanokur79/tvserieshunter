@@ -11,12 +11,17 @@ export default function Home() {
       align='middle'
       style={{ minHeight: "80vh" }}
     >
-      <Col>
-        <Space direction='vertical' size='large'>
+      <Col xs={20} offset={1}>
+        <Row type='flex' justify='center' align='middle'>
           <Title>TV Series Hunter</Title>
-
-          <SearchBar size='large' placeholder='Search for TV Series' />
-
+        </Row>
+        <Row type='flex' justify='center' align='middle'>
+          <Col xs={22} lg={12}>
+            <SearchBar size='large' placeholder='Search for TV Series' />
+          </Col>
+        </Row>
+        <Divider dashed />
+        <Row type='flex' justify='space-around' style={{ minHeight: "2rem" }}>
           <Space size='middle'>
             <Link to='/latestseries'>
               <Button type='primary'>Latest Movies</Button>
@@ -26,7 +31,7 @@ export default function Home() {
               <Button type='primary'>Top Rated Movies</Button>
             </Link>
           </Space>
-        </Space>
+        </Row>
       </Col>
     </Row>
   );
