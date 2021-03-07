@@ -29,53 +29,56 @@ function SiteFooter() {
   const history = useHistory();
   return (
     <>
-      <Row align='middle' justify='center'>
+      <Row
+        type='flex'
+        justify='center'
+        align='middle'
+        style={{ minHeight: "5vh" }}
+      >
         <Col className='mobileVisible tabletVisible'>
-          <div>
-            <Menu
-              theme='light'
-              onClick={(e) => handleClick(e)}
-              selectedKeys={[current]}
-              mode='horizontal'
-            >
-              <SubMenu key='SubMenu' icon={<MenuOutlined />} title='Lists'>
-                <Menu.ItemGroup title='Latest'>
-                  <Menu.Item
-                    key='serieList:2'
-                    onClick={() => history.push("/latestseries")}
-                  >
-                    Latest TV Series
-                  </Menu.Item>
-                </Menu.ItemGroup>
-                <Menu.ItemGroup title='Goldies'>
-                  <Menu.Item
-                    key='serieList:3'
-                    onClick={() => history.push("/topratedseries")}
-                  >
-                    Top Rated TV Series
-                  </Menu.Item>
-                </Menu.ItemGroup>
-              </SubMenu>
-              <Menu.Item key='Serkan' icon={<AntDesignOutlined />}>
-                <a
-                  href='https://serkanokur.xyz'
-                  target='_blank'
-                  rel='noopener noreferrer'
+          <Menu
+            theme='light'
+            onClick={(e) => handleClick(e)}
+            selectedKeys={[current]}
+            mode='horizontal'
+          >
+            <SubMenu key='SubMenu' icon={<MenuOutlined />} title='Lists'>
+              <Menu.ItemGroup title='Latest'>
+                <Menu.Item
+                  key='serieList:2'
+                  onClick={() => history.push("/latestseries")}
                 >
-                  About Me
-                </a>
-              </Menu.Item>
-              <Menu.Item key='mail' icon={<PlaySquareOutlined />}>
-                <a
-                  href='https://moviehunter-so.netlify.app/'
-                  target='_blank'
-                  rel='noopener noreferrer'
+                  Latest TV Series
+                </Menu.Item>
+              </Menu.ItemGroup>
+              <Menu.ItemGroup title='Goldies'>
+                <Menu.Item
+                  key='serieList:3'
+                  onClick={() => history.push("/topratedseries")}
                 >
-                  Movie Hunter
-                </a>
-              </Menu.Item>
-            </Menu>
-          </div>
+                  Top Rated TV Series
+                </Menu.Item>
+              </Menu.ItemGroup>
+            </SubMenu>
+            <Menu.Item key='Serkan' icon={<AntDesignOutlined />}>
+              <a
+                href='https://serkanokur.xyz'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                About Me
+              </a>
+            </Menu.Item>
+            <Menu.Item key='mail' icon={<PlaySquareOutlined />}>
+              <a
+                href='https://moviehunter-so.netlify.app/'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                Movie Hunter
+              </a>
+            </Menu.Item>
+          </Menu>
         </Col>
         <Row
           type='flex'
