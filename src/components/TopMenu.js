@@ -25,32 +25,26 @@ export default function TopMenu({ theme, setTheme }) {
   const history = useHistory();
 
   return (
-    <Row gutter={8} flex justify='end'>
-      {!isHome && (
-        <Col>
-          <Link to='/'>
-            <Button type='link'>
-              <Col xs={4}>
-                <Space>
-                  <img
-                    src={TMDb}
-                    style={{ height: "1.2rem" }}
-                    alt='TMDB Logo'
-                  />
+    <Row gutter={8} flex justify='center'>
+      <Col>
+        <Link to='/'>
+          <Button type='link'>
+            <Col xs={4}>
+              <Space>
+                <img src={TMDb} style={{ height: "1.2rem" }} alt='TMDB Logo' />
 
-                  <Title
-                    level={3}
-                    style={{ color: "gray", height: "1.2rem" }}
-                    className='mobileHidden'
-                  >
-                    TV Series Hunter
-                  </Title>
-                </Space>
-              </Col>
-            </Button>
-          </Link>
-        </Col>
-      )}
+                <Title
+                  level={3}
+                  style={{ color: "gray", height: "1.2rem" }}
+                  className='mobileHidden'
+                >
+                  TV Series Hunter
+                </Title>
+              </Space>
+            </Col>
+          </Button>
+        </Link>
+      </Col>
 
       {!isHome && (
         <Col
