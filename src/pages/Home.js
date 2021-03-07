@@ -9,7 +9,7 @@ export default function Home() {
       type='flex'
       justify='center'
       align='middle'
-      style={{ minHeight: "80vh" }}
+      style={{ minHeight: "83vh" }}
     >
       <Col xs={20} offset={1}>
         <Row type='flex' justify='center' align='middle'>
