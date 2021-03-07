@@ -24,7 +24,7 @@ function App() {
           <Header theme='light'>
             <TopMenu />
           </Header>
-          <Content className='site-layout'>
+          <Content>
             <Switch>
               <Route exact path='/'>
                 <Home />
