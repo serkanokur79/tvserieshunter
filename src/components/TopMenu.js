@@ -24,7 +24,7 @@ export default function TopMenu({ theme, setTheme }) {
 
   return (
     <Row gutter={8}>
-      <Col offset={2}>
+      <Col>
         <Link to='/'>
           <Button type='link'>
             <Col xs={4}>
