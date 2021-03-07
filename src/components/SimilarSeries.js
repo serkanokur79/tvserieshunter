@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SerieMiniCard from "./SerieMiniCard";
-import { Row, Space, Col } from "antd";
+import { Row, Space, Col, Typography, Empty } from "antd";
+const { Title } = Typography;
 
 function SimilarSeries({ serieId }) {
   const [results, setResults] = useState([]);
@@ -43,6 +44,12 @@ function SimilarSeries({ serieId }) {
               ))}
           </Space>
         </Row>
+      )}
+      {numResults === 0 && (
+        <>
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+          <Title level={4}>Not enough data about the TV Series!</Title>
+        </>
       )}
     </div>
   );
