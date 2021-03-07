@@ -101,7 +101,7 @@ export default function TopMenu({ theme, setTheme }) {
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                Movie Hunter
+                MovieHunter
               </a>
             </Menu.Item>
           </Menu>
