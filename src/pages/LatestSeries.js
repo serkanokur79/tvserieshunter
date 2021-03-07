@@ -37,21 +37,30 @@ function LatestSeries({ serieId }) {
     <>
       {numResults > 0 && (
         <>
-          <Row justify='center'>
-            <Title>Latest TV Series</Title>
+          <Row
+            type='flex'
+            justify='center'
+            align='middle'
+            style={{ minHeight: "80vh" }}
+          >
+            <Col xs={20} offset={1}>
+              <Row type='flex' justify='center' align='middle'>
+                <Title>Latest TV Series</Title>
+              </Row>
+              <Space>
+                <Row gutter={[16, 16]}>
+                  {latestSeries
+                    .slice(0, 12)
+                    .filter((serie) => serie.poster_path)
+                    .map((serie) => (
+                      <Col span={span}>
+                        <SerieMiniCard serie={serie} key={serie.id} />
+                      </Col>
+                    ))}
+                </Row>
+              </Space>
+            </Col>
           </Row>
-          <Space>
-            <Row gutter={[16, 16]}>
-              {latestSeries
-                .slice(0, 12)
-                .filter((serie) => serie.poster_path)
-                .map((serie) => (
-                  <Col span={span}>
-                    <SerieMiniCard serie={serie} key={serie.id} />
-                  </Col>
-                ))}
-            </Row>
-          </Space>
         </>
       )}
     </>
