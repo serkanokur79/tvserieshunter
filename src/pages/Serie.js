@@ -220,7 +220,7 @@ const SerieMobile = () => {
               <Divider orientation='left' style={{ marginTop: "5rem" }}>
                 <Title level={3}>Info</Title>
               </Divider>
-              <Col xs={20} offset={1}>
+              <Col xs={18} offset={2}>
                 <Row className='serie_info_rows'>
                   <Descriptions
                     column={{ xxl: 6, xl: 5, lg: 4, md: 3, sm: 2, xs: 2 }}
