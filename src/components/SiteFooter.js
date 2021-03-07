@@ -1,13 +1,13 @@
-import { Typography, Space, Col, Row, BackTop, Menu } from "antd";
+import { Typography, Col, Row, BackTop, Menu } from "antd";
 import { useState } from "react";
-import TMDb from "../images/TMDb.svg";
+
 import {
   AntDesignOutlined,
   MenuOutlined,
   PlaySquareOutlined,
 } from "@ant-design/icons";
 import { useHistory } from "react-router";
-const { Text, Link, Title } = Typography;
+const { Link, Title } = Typography;
 const { SubMenu } = Menu;
 const style = {
   height: 40,
