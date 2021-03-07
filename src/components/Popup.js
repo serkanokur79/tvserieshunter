@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import { Modal, Button } from "antd";
+import { useState } from "react";
+import { Modal } from "antd";
 
+function Popup(props) {
+  const { title, children, openPopup, setOpenPopup } = props;
 
-function Popup(props){
-   const { title, children, openPopup, setOpenPopup } = props;
-   
   const [visible, setVisible] = useState(openPopup);
 
   const showModal = () => {
@@ -22,20 +21,18 @@ function Popup(props){
     setOpenPopup(false);
   };
 
-
   return (
-      <>
-        <Modal
-          title={title}
-          visible={visible}
-          onOk={()=>handleOk()}
-          onCancel={()=>handleCancel()}
-        >
-            {children}
-        </Modal>
-      </>
-    );
+    <>
+      <Modal
+        title={title}
+        visible={visible}
+        onOk={() => handleOk()}
+        onCancel={() => handleCancel()}
+      >
+        {children}
+      </Modal>
+    </>
+  );
 }
-
 
 export default Popup;
