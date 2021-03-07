@@ -38,7 +38,7 @@ function TopRatedSeries({ serieId }) {
       {numResults > 0 && (
         <>
           <Row justify='center'>
-            <Title>Latest TV Series</Title>
+            <Title>Top Rated TV Series</Title>
           </Row>
           <Space>
             <Row gutter={[16, 16]}>
