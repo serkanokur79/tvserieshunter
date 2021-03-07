@@ -79,7 +79,7 @@ const SerieMobile = () => {
 
   const SerieDetails = () => {
     return (
-      <Col>
+      <Col style={{ marginTop: "2rem" }}>
         <Space direction='vertical' size='small'>
           <Row>
             <Title>{name}</Title>
@@ -94,33 +94,29 @@ const SerieMobile = () => {
             </Title>
           </Row>
           <Row>
-            <Space split={<Divider type='vertical' />}>
-              <Col xs={22} offset={1}>
-                <Title level={3}>
-                  <Space size='middle'>
-                    <ReadOutlined />
-                    {genres.map(
-                      (genre, i) =>
-                        genre.name + (i === genres.length - 1 ? "" : ",")
-                    )}
-                  </Space>
-                </Title>
-              </Col>
-              <Col xs={22} offset={1}>
-                <Title level={4}>
-                  <Space size='middle'>
-                    <ClockCircleOutlined />
-                    {episode_run_time > 60
-                      ? Math.floor(episode_run_time / 60) +
-                        "h " +
-                        (episode_run_time -
-                          Math.floor(episode_run_time / 60) * 60) +
-                        "m"
-                      : episode_run_time + "m"}
-                  </Space>
-                </Title>
-              </Col>
-            </Space>
+            <Col xs={24}>
+              <Title level={3}>
+                <ReadOutlined />{" "}
+                {genres.map(
+                  (genre, i) =>
+                    genre.name + (i === genres.length - 1 ? "" : ",")
+                )}
+              </Title>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={24}>
+              <Title level={4}>
+                <ClockCircleOutlined />{" "}
+                {episode_run_time > 60
+                  ? Math.floor(episode_run_time / 60) +
+                    "h " +
+                    (episode_run_time -
+                      Math.floor(episode_run_time / 60) * 60) +
+                    "m"
+                  : episode_run_time + "m"}
+              </Title>
+            </Col>
           </Row>
           <Row>
             <Space>
@@ -131,10 +127,10 @@ const SerieMobile = () => {
                 <MovieRating vote_average={vote_average} width='4rem' />
               </Col>
 
-              <Col>
+              <Col xs={0}>
                 <Title level={4}>Trailer:</Title>
               </Col>
-              <Col>
+              <Col xs={0}>
                 <Button
                   type='ghost'
                   size='large'
@@ -171,7 +167,7 @@ const SerieMobile = () => {
             <Title level={3}>{tagline}</Title>
           </Row>
           <Row>
-            <Col xs={22} offset={1}>
+            <Col>
               <Title level={5}>{overview}</Title>
             </Col>
           </Row>
@@ -209,47 +205,51 @@ const SerieMobile = () => {
 
           <Row wrap>
             <Row wrap gutter={8}>
-              <Col xs={24} sm={9} xl={8}>
+              <Col xs={22} offset={1} lg={6}>
                 <img
-                  width='250rem'
+                  width='300px'
+                  style={{ objectFit: "cover" }}
                   src={posterSrc}
                   alt={name + "poster"}
-                  style={{ margin: "0.5rem" }}
                 ></img>
               </Col>
-              <Col xs={24} sm={15} xl={16}>
+              <Col xs={22} offset={1} lg={16}>
                 <SerieDetails />
               </Col>
             </Row>
             <Space direction='vertical'>
-              <Divider orientation='left'>
+              <Divider orientation='left' style={{ marginTop: "5rem" }}>
                 <Title level={3}>Info</Title>
               </Divider>
-              <Row className='serie_info_rows'>
-                <Descriptions
-                  column={{ xxl: 6, xl: 5, lg: 4, md: 3, sm: 2, xs: 1 }}
-                  size='14'
-                >
-                  <Descriptions.Item label='Origin'>
-                    {origin_country}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Status'>{status}</Descriptions.Item>
-                  <Descriptions.Item label='Seasons'>
-                    {number_of_seasons}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Episodes'>
-                    {number_of_episodes}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Budget'>
-                    {budget !== "Unknown" ? moneyFormatted(budget) : budget}
-                  </Descriptions.Item>
-                  <Descriptions.Item label='Revenue'>
-                    {revenue !== "Unknown" ? moneyFormatted(revenue) : "-"}
-                  </Descriptions.Item>
+              <Col xs={20} offset={1}>
+                <Row className='serie_info_rows'>
+                  <Descriptions
+                    column={{ xxl: 6, xl: 5, lg: 4, md: 3 }}
+                    size='14'
+                  >
+                    <Descriptions.Item label='Origin'>
+                      {origin_country}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Status'>
+                      {status}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Seasons'>
+                      {number_of_seasons}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Episodes'>
+                      {number_of_episodes}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Budget'>
+                      {budget !== "Unknown" ? moneyFormatted(budget) : budget}
+                    </Descriptions.Item>
+                    <Descriptions.Item label='Revenue'>
+                      {revenue !== "Unknown" ? moneyFormatted(revenue) : "-"}
+                    </Descriptions.Item>
 
-                  {/* <Descriptions.Item label='IMDB'>{imdb_id}</Descriptions.Item>*/}
-                </Descriptions>
-              </Row>
+                    {/* <Descriptions.Item label='IMDB'>{imdb_id}</Descriptions.Item>*/}
+                  </Descriptions>
+                </Row>
+              </Col>
 
               <Divider orientation='left'>
                 <Title level={3}>Videos</Title>
@@ -269,6 +269,7 @@ const SerieMobile = () => {
                         <Title level={4}>{video.type}:</Title>
                         <YouTube
                           videoId={video.key}
+                          onPlay={() => alert("deneme")}
                           opts={{
                             height: "280",
                             width: "525",
