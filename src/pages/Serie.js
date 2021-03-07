@@ -202,7 +202,7 @@ const SerieMobile = () => {
             </div>
           )}
 
-          <Row wrap>
+          <Row flex align='center' justify='center'>
             <Row wrap gutter={8}>
               <Col xs={22} offset={1} lg={6}>
                 <img
