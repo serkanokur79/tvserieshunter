@@ -1,7 +1,8 @@
 import { useEffect, useContext, useState } from "react";
 import SerieMiniCard from "../components/SerieMiniCard";
-import { Row, Space, Col } from "antd";
+import { Row, Space, Col, Typography } from "antd";
 import SerieContext from "../context/series/SerieContext";
+const { Title } = Typography;
 
 function TopRatedSeries({ serieId }) {
   const serieContext = useContext(SerieContext);
@@ -36,6 +37,9 @@ function TopRatedSeries({ serieId }) {
     <>
       {numResults > 0 && (
         <>
+          <Row justify='center'>
+            <Title>Latest TV Series</Title>
+          </Row>
           <Space>
             <Row gutter={[16, 16]}>
               {mostRatedSeries
