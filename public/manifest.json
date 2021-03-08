@@ -1,6 +1,7 @@
 {
   "name": "Tv Series Hunter by Serkan Okur",
   "short_name": "TvSeriesHunter",
+  "description": "Search for your favorite TV Series or follow what is popular lately",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,9 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/index.html",
   "theme_color": "#2c4a7e",
   "background_color": "#21f36f",
-  "display": "fullscreen",
-  "scope": "/"
+  "display": "fullscreen"
 }
