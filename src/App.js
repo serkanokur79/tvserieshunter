@@ -8,11 +8,11 @@ import TopMenu from "./components/TopMenu";
 import SiteFooter from "./components/SiteFooter";
 import SearchResults from "./pages/SearchResults";
 import Serie from "./pages/Serie";
-
-import SerieState from "./context/series/SerieState";
 import LatestSeries from "./pages/LatestSeries";
 import TopRatedSeries from "./pages/TopRatedSeries";
 import Page404 from "./pages/Page404";
+
+import SerieState from "./context/series/SerieState";
 
 const { Header, Footer, Content } = Layout;
 

@@ -14,13 +14,15 @@ const { SubMenu } = Menu;
 
 export default function TopMenu({ theme, setTheme }) {
   const [current, setCurrent] = useState(1);
+
+  const handleClick = (e) => {
+    setCurrent(e.key);
+  };
+
   let location = useLocation();
   console.log("pathname", location.pathname);
   const isHome = location.pathname === "/";
   console.log(isHome);
-  const handleClick = (e) => {
-    setCurrent(e.key);
-  };
 
   const history = useHistory();
 
