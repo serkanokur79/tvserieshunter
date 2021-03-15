@@ -268,7 +268,6 @@ const SerieMobile = () => {
                         <Title level={4}>{video.type}:</Title>
                         <YouTube
                           videoId={video.key}
-                          onPlay={() => alert("deneme")}
                           opts={{
                             height: "280",
                             width: "525",
