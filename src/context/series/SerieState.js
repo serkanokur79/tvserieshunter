@@ -82,7 +82,7 @@ const SerieState = (props) => {
   // gest most rated series
 
   const getMostRatedSeries = async (page) => {
-    const url = `http://api.themoviedb.org/3/discover/tv?sort_by=vote_average.desc&vote_count.gte=1000&language=en-US`;
+    const url = `http://api.themoviedb.org/4/discover/tv?sort_by=vote_average.desc&vote_count.gte=1000&language=en-US`;
     setLoading(true);
 
     fetch(url, options)
