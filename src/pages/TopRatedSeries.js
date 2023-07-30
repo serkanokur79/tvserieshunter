@@ -38,13 +38,13 @@ function TopRatedSeries({ serieId }) {
       {numResults > 0 && (
         <>
           <Row
-            type='flex'
-            justify='center'
-            align='middle'
-            style={{ minHeight: "80vh" }}
+            type="flex"
+            justify="center"
+            align="middle"
+            style={{ minHeight: "90vh", width: "95vw" }}
           >
             <Col xs={20} offset={1}>
-              <Row type='flex' justify='center' align='middle'>
+              <Row type="flex" justify="center" align="middle">
                 <Title>Top Rated TV Series</Title>
               </Row>
               <Space>

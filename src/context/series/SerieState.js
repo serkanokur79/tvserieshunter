@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import axios from "axios";
+
 import SerieContext from "./SerieContext";
 import SerieReducer from "./SerieReducer";
 import {
@@ -42,37 +42,59 @@ const SerieState = (props) => {
     dispatch({ type: SET_QUERY, payload: query });
   };
 
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+    },
+  };
+
   // Search series
   const searchSeries = async (query, pageNumber) => {
-    const url = `https://api.themoviedb.org/3/search/tv?api_key=b8f6d41c97c40c0d5d8d498c90fdffc7&language=en-US&query=${query}&page=${pageNumber}&include_adult=false&sort_by=rating.desc`;
+    const url = `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US`;
     setLoading();
-    const res = await axios.get(url);
-    setSearchQuery(query);
-    setSeries(res.data.results);
-    setSeriesTotalResults(res.data.total_results);
-    setSeriesTotalPages(res.data.total_pages);
-    setSeriesCurrentPage(res.data.page);
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        setSearchQuery(query);
+        setSeries(res.results);
+        setSeriesTotalResults(res.total_results);
+        setSeriesTotalPages(res.total_pages);
+        setSeriesCurrentPage(res.page);
+      })
+      .catch((err) => console.error(err));
   };
   // get latest series
   const getLatestSeries = async (page) => {
-    const url = `https://api.themoviedb.org/3/discover/tv?primary_release_date.gte=2021-02-15&primary_release_date.lte=2021-03-10&language=en-US&adult=false&sort_by=popularity.desc&page=${page}&api_key=b8f6d41c97c40c0d5d8d498c90fdffc7`;
     setLoading();
-    const res = await axios.get(url);
-    setlatestSeries(res.data.results);
-    setSeriesTotalResults(res.data.total_results);
-    setSeriesTotalPages(res.data.total_pages);
-    setSeriesCurrentPage(res.data.page);
+    fetch("https://api.themoviedb.org/3/discover/tv", options)
+      .then((response) => response.json())
+      .then((res) => {
+        console.log("latest movies ==>", res);
+        setlatestSeries(res.results);
+        setSeriesTotalResults(res.total_results);
+        setSeriesTotalPages(res.total_pages);
+        setSeriesCurrentPage(res.page);
+      })
+      .catch((err) => console.error(err));
   };
   // gest most rated series
 
   const getMostRatedSeries = async (page) => {
-    const url = `http://api.themoviedb.org/3/discover/tv?sort_by=vote_average.desc&vote_count.gte=1000&api_key=b8f6d41c97c40c0d5d8d498c90fdffc7&language=en-US&page=${page}`;
+    const url = `http://api.themoviedb.org/3/discover/tv?sort_by=vote_average.desc&vote_count.gte=1000&language=en-US&page=${page}`;
     setLoading(true);
-    const res = await axios.get(url);
-    setMostRatedSeries(res.data.results);
-    setSeriesTotalResults(res.data.total_results);
-    setSeriesTotalPages(res.data.total_pages);
-    setSeriesCurrentPage(res.data.page);
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        console.log("latest movies ==>", res);
+        setMostRatedSeries(res.results);
+        setSeriesTotalResults(res.total_results);
+        setSeriesTotalPages(res.total_pages);
+        setSeriesCurrentPage(res.page);
+      })
+      .catch((err) => console.error(err));
   };
   //Set Searched Query
   const setSearchQuery = (query) => {
@@ -109,41 +131,46 @@ const SerieState = (props) => {
 
   // Get serie
   const getSerie = async (tvId) => {
-    const url = `https://api.themoviedb.org/3/tv/${tvId}?api_key=b8f6d41c97c40c0d5d8d498c90fdffc7`;
+    const url = `https://api.themoviedb.org/3/tv/${tvId}&language=en-US`;
     setLoading(true);
-    try {
-      const res = await axios.get(url);
-      console.log("serie " + tvId + " successfully loaded");
-      setSerie(res.data);
-      setSerieError(false);
-    } catch (error) {
-      console.log("serie " + tvId + "not found!!!");
-      setSerieError(true);
-      setSerie([]);
-    }
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        console.log("latest movies ==>", res);
+        setSerie(res);
+        setSerieError(false);
+      })
+      .catch((err) => {
+        console.log("serie " + tvId + "not found!!!");
+        setSerieError(true);
+        setSerie([]);
+      });
+
+    console.log("serie " + tvId + " successfully loaded");
   };
   // Get serie videos
   const getSerieVideos = async (tvId) => {
-    const url = `https://api.themoviedb.org/3/tv/${tvId}/videos?api_key=b8f6d41c97c40c0d5d8d498c90fdffc7&language=en-US`;
+    const url = `https://api.themoviedb.org/3/tv/${tvId}/videos`;
     setLoading(true);
-    try {
-      const res = await axios.get(url);
-      setSerieVideos(res.data.results);
 
-      for (let i = 0; i < res.data.results.length; i++) {
-        if (res.data.results[i].type === "Trailer") {
-          /*console.log(
-            res.data.results[0].type + " found: " + res.data.results[i].name
-          );*/
-          const trailer = [res.data.results[i].name, res.data.results[i].key];
-          // console.log("trailer =>", trailer);
-          setSeriesTrailerVideo(trailer);
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        console.log("latest eries videos ==>", res);
+        setSerieVideos(res.results);
+        for (let i = 0; i < res.results.length; i++) {
+          if (res.results[i].type === "Trailer") {
+            const trailer = [res.results[i].name, res.results[i].key];
+
+            setSeriesTrailerVideo(trailer);
+          }
         }
-      }
-    } catch (error) {
-      console.log("serie " + tvId + "does not have videos");
-      setSerieVideos([]);
-    }
+      })
+      .catch((err) => {
+        console.log("serie " + tvId + "does not have videos");
+        setSerieVideos([]);
+      });
   };
   //set serie videos
   const setSerieVideos = (data) =>

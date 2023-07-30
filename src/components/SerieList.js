@@ -59,13 +59,13 @@ const SerieList = (props) => {
       {searchedQuery && (
         <>
           <Paginator />
-
           <Row gutter={[16, 16]}>
-            {series.map((serie) => (
-              <Col span={span}>
-                <SerieMiniCard serie={serie} key={serie.id} />
-              </Col>
-            ))}
+            {series &&
+              series?.map((serie) => (
+                <Col span={span}>
+                  <SerieMiniCard serie={serie} key={serie.id} />
+                </Col>
+              ))}
           </Row>
           <Paginator />
         </>

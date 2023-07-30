@@ -38,13 +38,13 @@ function LatestSeries({ serieId }) {
       {numResults > 0 && (
         <>
           <Row
-            type='flex'
-            justify='center'
-            align='middle'
-            style={{ minHeight: "80vh" }}
+            type="flex"
+            justify="center"
+            align="middle"
+            style={{ minHeight: "88vh" }}
           >
             <Col xs={20} offset={1}>
-              <Row type='flex' justify='center' align='middle'>
+              <Row type="flex" justify="center" align="middle">
                 <Title>Latest TV Series</Title>
               </Row>
               <Space>

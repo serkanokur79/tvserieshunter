@@ -30,50 +30,50 @@ function SiteFooter() {
   return (
     <>
       <Row
-        type='flex'
-        justify='center'
-        align='middle'
+        type="flex"
+        justify="center"
+        align="middle"
         style={{ minHeight: "5vh" }}
       >
-        <Col className='mobileVisible tabletVisible'>
+        <Col className="mobileVisible tabletVisible">
           <Menu
-            theme='light'
+            theme="light"
             onClick={(e) => handleClick(e)}
             selectedKeys={[current]}
-            mode='horizontal'
+            mode="horizontal"
           >
-            <SubMenu key='SubMenu' icon={<MenuOutlined />} title='Lists'>
-              <Menu.ItemGroup title='Latest'>
+            <SubMenu key="SubMenu" icon={<MenuOutlined />} title="Lists">
+              <Menu.ItemGroup title="Latest">
                 <Menu.Item
-                  key='serieList:2'
+                  key="serieList:2"
                   onClick={() => history.push("/latestseries")}
                 >
                   Latest TV Series
                 </Menu.Item>
               </Menu.ItemGroup>
-              <Menu.ItemGroup title='Goldies'>
+              <Menu.ItemGroup title="Goldies">
                 <Menu.Item
-                  key='serieList:3'
+                  key="serieList:3"
                   onClick={() => history.push("/topratedseries")}
                 >
                   Top Rated TV Series
                 </Menu.Item>
               </Menu.ItemGroup>
             </SubMenu>
-            <Menu.Item key='Serkan' icon={<AntDesignOutlined />}>
+            <Menu.Item key="Serkan" icon={<AntDesignOutlined />}>
               <a
-                href='https://serkanokur.xyz'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://serkanokur.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 About Me
               </a>
             </Menu.Item>
-            <Menu.Item key='mail' icon={<PlaySquareOutlined />}>
+            <Menu.Item key="mail" icon={<PlaySquareOutlined />}>
               <a
-                href='https://moviehunter-so.netlify.app/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://moviehunter-so.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Movie Hunter
               </a>
@@ -81,18 +81,18 @@ function SiteFooter() {
           </Menu>
         </Col>
         <Row
-          type='flex'
-          justify='center'
-          align='middle'
-          className='mobileHidden tabletHidden'
+          type="flex"
+          justify="center"
+          align="middle"
+          className="mobileHidden tabletHidden"
         >
           <Title level={5}>
             &#169; 2021 -
-            <Link href='https://www.serkanokur.xyz' target='_blank'>
+            <Link href="https://www.serkanokur.xyz" target="_blank">
               Serkan Okur
             </Link>
             - This product uses the TMDb API but is not endorsed or certified by{" "}
-            <Link href='https://developers.themoviedb.org/3' target='_blank'>
+            <Link href="https://developers.themoviedb.org/3" target="_blank">
               TMDb
             </Link>
           </Title>

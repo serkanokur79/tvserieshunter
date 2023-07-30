@@ -7,27 +7,34 @@ function SimilarSeries({ serieId }) {
   const [results, setResults] = useState([]);
   const [numResults, setNumResults] = useState(0);
 
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+    },
+  };
   const searchSimilarSeries = async (serieId) => {
-    const url = `https://api.themoviedb.org/3/tv/${serieId}/similar?api_key=b8f6d41c97c40c0d5d8d498c90fdffc7&language=en-US&page=1
+    const url = `https://api.themoviedb.org/3/tv/${serieId}/similar
 `;
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      setResults(data.results);
-      setNumResults(data.total_results);
-    } catch (err) {
-      console.log(err);
-    }
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((res) => {
+        setResults(res.results);
+        setNumResults(res.total_results);
+      })
+      .catch((err) => console.error(err));
   };
   useEffect(() => {
     searchSimilarSeries(serieId);
   }, [serieId]);
 
   return (
-    <div className='tabSlider'>
+    <div className="tabSlider">
       {numResults > 0 && (
         <Row>
-          <Space size='middle'>
+          <Space size="middle">
             {results
               .slice(0, 6)
               .filter((serie) => serie.poster_path)
