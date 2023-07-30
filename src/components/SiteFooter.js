@@ -62,7 +62,7 @@ function SiteFooter() {
             </SubMenu>
             <Menu.Item key="Serkan" icon={<AntDesignOutlined />}>
               <a
-                href="https://serkanokur.xyz"
+                href="https://serkanokur-portfolio.netlify.app/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
