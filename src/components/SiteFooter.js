@@ -88,7 +88,10 @@ function SiteFooter() {
         >
           <Title level={5}>
             &#169; 2021 -
-            <Link href="https://www.serkanokur.xyz" target="_blank">
+            <Link
+              href="https://serkanokur-portfolio.netlify.app/"
+              target="_blank"
+            >
               Serkan Okur
             </Link>
             - This product uses the TMDb API but is not endorsed or certified by{" "}

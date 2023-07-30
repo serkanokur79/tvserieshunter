@@ -27,18 +27,18 @@ export default function TopMenu({ theme, setTheme }) {
   const history = useHistory();
 
   return (
-    <Row gutter={8} flex justify='center'>
+    <Row gutter={8} flex justify="center">
       <Col>
-        <Link to='/'>
-          <Button type='link'>
+        <Link to="/">
+          <Button type="link">
             <Col xs={4}>
               <Space>
-                <img src={TMDb} style={{ height: "1.2rem" }} alt='TMDB Logo' />
+                <img src={TMDb} style={{ height: "1.2rem" }} alt="TMDB Logo" />
 
                 <Title
                   level={3}
                   style={{ color: "gray", height: "1.2rem" }}
-                  className='mobileHidden'
+                  className="mobileHidden"
                 >
                   TV Series Hunter
                 </Title>
@@ -51,7 +51,7 @@ export default function TopMenu({ theme, setTheme }) {
       {!isHome && (
         <Col
           xs={14}
-          flex='auto'
+          flex="auto"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -63,45 +63,45 @@ export default function TopMenu({ theme, setTheme }) {
       )}
 
       <Col xs={0} lg={6}>
-        <Row justify='center' align='middle'>
+        <Row justify="center" align="middle">
           <Menu
-            theme='dark'
+            theme="dark"
             onClick={(e) => handleClick(e)}
             selectedKeys={[current]}
-            mode='horizontal'
+            mode="horizontal"
           >
-            <SubMenu key='SubMenu' icon={<MenuOutlined />} title='Lists'>
-              <Menu.ItemGroup title='Latest'>
+            <SubMenu key="SubMenu" icon={<MenuOutlined />} title="Lists">
+              <Menu.ItemGroup title="Latest">
                 <Menu.Item
-                  key='serieList:2'
+                  key="serieList:2"
                   onClick={() => history.push("/latestseries")}
                 >
                   Latest TV Series
                 </Menu.Item>
               </Menu.ItemGroup>
-              <Menu.ItemGroup title='Goldies'>
+              <Menu.ItemGroup title="Goldies">
                 <Menu.Item
-                  key='serieList:3'
+                  key="serieList:3"
                   onClick={() => history.push("/topratedseries")}
                 >
                   Top Rated TV Series
                 </Menu.Item>
               </Menu.ItemGroup>
             </SubMenu>
-            <Menu.Item key='Serkan' icon={<AntDesignOutlined />}>
+            <Menu.Item key="Serkan" icon={<AntDesignOutlined />}>
               <a
-                href='https://serkanokur.xyz'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://serkanokur-portfolio.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 About Me
               </a>
             </Menu.Item>
-            <Menu.Item key='mail' icon={<PlaySquareOutlined />}>
+            <Menu.Item key="mail" icon={<PlaySquareOutlined />}>
               <a
-                href='https://moviehunter-so.netlify.app/'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://moviehunter-so.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 MovieHunter
               </a>
